@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PowerMockIgnore;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.junit.Assert;
@@ -13,6 +14,13 @@ import org.junit.Assert;
 
 @PrepareForTest({ SomeSystem.class })
 @RunWith(PowerMockRunner.class)
+//@PowerMockIgnore("jdk.internal.reflect.*")
+/*
+ * @PowerMockIgnore({"javax.management.", "com.sun.org.apache.xerces.",
+ * "javax.xml.", "org.xml.", "org.w3c.dom.", "com.sun.org.apache.xalan.",
+ * "javax.activation.*","jdk/internal/reflect"})
+ */
+@PowerMockIgnore({"com.sun.org.apache.xerces.*", "javax.xml.*", "org.xml.*", "javax.management.*"})
 public class PowerMockitoStubPrivateMethodExample {
 	private Service service;
 	private SomeSystem system;
@@ -70,6 +78,7 @@ public class PowerMockitoStubPrivateMethodExample {
 	}
 
 	private void p(String s) {
+		System.out.println("-----------------------------");
 		System.out.println(s);
 	}
 }

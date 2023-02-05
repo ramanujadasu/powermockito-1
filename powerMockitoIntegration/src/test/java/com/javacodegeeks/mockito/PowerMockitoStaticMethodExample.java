@@ -59,6 +59,7 @@ public class PowerMockitoStaticMethodExample {
 	}
 
 	private void p(String s) {
+		System.out.println("-----------------------------");
 		System.out.println(s);
 	}
 }
